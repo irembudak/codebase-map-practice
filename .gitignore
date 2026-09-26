@@ -21,6 +21,5 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Local codebase-map output
-# The skill remains installed locally; generated maps stay local too.
-docs/codebase-map/
+# Local documentation
+docs/
