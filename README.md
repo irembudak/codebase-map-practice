@@ -1,12 +1,20 @@
-# Codebase Map Practice
+# Task Manager API
 
-A small Task Manager API designed specifically for practicing the `rdilruba/codebase-map` skill.
+A small REST API for managing tasks, built with FastAPI.
 
 ## What this project does
 
-It exposes a REST API for creating, listing, completing, and deleting tasks.
+The API supports:
 
-The project is intentionally small, but it has multiple layers:
+- Creating tasks
+- Listing tasks
+- Completing tasks
+- Deleting tasks
+- Health checks
+
+The application is intentionally small while still separating HTTP handling, business logic, persistence, and validation.
+
+## Architecture
 
 ```text
 HTTP Request
@@ -51,7 +59,7 @@ requirements.txt
 
 ## Run locally
 
-Create and activate a virtual environment:
+Create a virtual environment:
 
 ```bash
 python -m venv .venv
@@ -80,37 +88,24 @@ Then open:
 - API: http://127.0.0.1:8000
 - Swagger UI: http://127.0.0.1:8000/docs
 
-Run tests:
+## Run tests
 
 ```bash
 pytest
 ```
 
-## Your codebase-map exercise
+## API endpoints
 
-Do **not** read every source file immediately.
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| GET | /health | Health check |
+| POST | /tasks | Create a task |
+| GET | /tasks | List tasks |
+| PATCH | /tasks/{task_id}/complete | Mark a task as completed |
+| DELETE | /tasks/{task_id} | Delete a task |
 
-First run the codebase-map skill against this repository.
+## Notes
 
-Then answer these questions from the generated map:
+Task data is currently stored in memory, so it is lost when the application restarts.
 
-1. Where is the application entry point?
-2. What happens when `POST /tasks` is called?
-3. Where is the business logic?
-4. Where is task data stored?
-5. Which modules depend on `TaskRepository`?
-6. What is the simplest path from an HTTP request to stored data?
-7. Which files would you change to add task filtering?
-8. What assumptions or unknowns should you verify by running the application?
-
-### First implementation task
-
-After mapping the repository, implement:
-
-```text
-GET /tasks/{task_id}
-```
-
-Do it yourself first. Use the map to decide which files need to change.
-
-Do not ask an AI to implement it immediately. The purpose of this repository is to practice navigating an unfamiliar codebase.
+This repository is intentionally small and suitable for experimenting with API design, testing, architecture, and developer tooling.
